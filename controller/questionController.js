@@ -46,7 +46,8 @@ class questionController {
             category:req.body.category,
             isAnswered:req.body.isAnswered,
             IDStudent:req.body.IDStudent,
-            nameStudent:req.body.nameStudent
+            nameStudent:req.body.nameStudent,
+            date:new Date()
         }
         let sql = `INSERT INTO tjs SET ?`
         db.query(sql,question,(err,result)=>{

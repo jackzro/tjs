@@ -9,6 +9,7 @@ router.post('/register',[
     check('name').not().isEmpty().withMessage("Your Name cannot be Empty !!!"),
     check('role').not().isEmpty().withMessage("Select Your Role !")
 ],userController.register)
+router.get('/credit/:id',userController.getCredit)
 router.patch('/plus',userController.creditPlus)
 router.patch('/minus',userController.creditMinus)
 router.patch('/hasAnswer',userController.hasAnswer)

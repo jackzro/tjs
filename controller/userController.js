@@ -54,10 +54,13 @@ class userController {
                         password:bcryptPass,
                         date:new Date(),
                         role:role,
-                        credit:0
+                        credit:0,
+                        hasAnswer:0
                     }
                     let mysql = `INSERT INTO user SET ?`
                     db.query(mysql,user,(err,result)=>{
+                        if(err)throw err
+                        console.log(result)
                         return res.status(201).json({
                             result:"Your Account has been registered"
                         })
@@ -112,6 +115,14 @@ class userController {
                 })
             })
             
+        })
+    }
+
+    static getCredit(req,res){
+        const { id } =req.params
+        let sql = `SELECT credit FROM user WHERE id = "${id}"`
+        db.query(sql,(error,result)=>{
+            return res.status(200).json(result)
         })
     }
 }
